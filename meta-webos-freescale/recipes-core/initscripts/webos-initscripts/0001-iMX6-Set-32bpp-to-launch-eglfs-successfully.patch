@@ -1,0 +1,23 @@
+From 781e2252e74f9bdf4a6eb4a802bdf609044323b1 Mon Sep 17 00:00:00 2001
+From: JeongBong Seo <lifeofthanks@gmail.com>
+Date: Fri, 6 Apr 2018 00:46:01 +0900
+Subject: [iMX6] Set 32bpp to launch eglfs successfully
+
+---
+ files/systemd/scripts/common/surface-manager-env.sh.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/files/systemd/scripts/common/surface-manager-env.sh.in b/files/systemd/scripts/common/surface-manager-env.sh.in
+index 5ac1a7e..5e38765 100644
+--- a/files/systemd/scripts/common/surface-manager-env.sh.in
++++ b/files/systemd/scripts/common/surface-manager-env.sh.in
+@@ -27,4 +27,6 @@ export WEBOS_COMPOSITOR_Y=${c%%:*};        c=${c#$WEBOS_COMPOSITOR_Y:}
+ export WEBOS_COMPOSITOR_ROTATION=${c%%:*}; c=${c#$WEBOS_COMPOSITOR_ROTATION:}
+ export WEBOS_DEVICE_PIXEL_RATIO=auto
+ 
++echo 32 > /sys/class/graphics/fb0/bits_per_pixel
++
+ exec /bin/systemctl import-environment
+-- 
+2.7.4
+
