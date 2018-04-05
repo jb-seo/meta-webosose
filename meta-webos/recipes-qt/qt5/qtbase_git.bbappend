@@ -112,7 +112,7 @@ SRC_URI_append = " \
 "
 
 # Do not include Qt testability patch for release
-SRC_URI_append = "${@'' if '${WEBOS_DISTRO_PRERELEASE}' == '' else ' file://0099-Move-testability-loading-code-to-the-QGuiApplication.patch'}"
+SRC_URI_append = "${@'' if '${WEBOS_DISTRO_PRERELEASE}' == '' else ' file://0099-Move-testability-loading-code-to-the-QGuiApplication.patch '}"
 
 # Needed to build libwayland_common_webos.a in qtwayland
 WEBOS_NO_STATIC_LIBRARIES_WHITELIST = "libQt5PlatformSupport.a"
