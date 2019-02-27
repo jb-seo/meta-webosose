@@ -47,10 +47,7 @@ MACHINE_EXTRA_RRECOMMENDS_append_raspberrypi3 = " \
 
 KERNEL_MODULE_AUTOLOAD_append = " uinput"
 
-# Disabling U-Boot until IP address conflict and ALSA issues resolved (PLAT-46515)
-# RPI_USE_U_BOOT = "1"
-# Enable only for raspberrypi3-64
-RPI_USE_U_BOOT_raspberrypi3-64 = "1"
+RPI_USE_U_BOOT = "1"
 
 # Always deploy the VFAT partition
 SDIMG_VFAT_DEPLOY = "1"
