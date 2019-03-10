@@ -5,7 +5,7 @@ AUTHOR  = "Hunter L. Allen <hunter@openrobotics.org>"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a6c8ac7da7368c03f2b7c2c4a246194d"
 
-DEPENDS = "rclcpp ros2-sensor-msgs ros2-std-srvs ament-cmake-ros"
+DEPENDS = "rclcpp sensor-msgs std-srvs ament-cmake-ros"
 
 inherit ament
 
