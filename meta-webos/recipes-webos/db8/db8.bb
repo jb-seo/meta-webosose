@@ -19,7 +19,7 @@ RDEPENDS_${PN}_append_class-target = " ${VIRTUAL-RUNTIME_stat} ${VIRTUAL-RUNTIME
 RDEPENDS_${PN}-test_append_class-target = " ${VIRTUAL-RUNTIME_bash}"
 
 WEBOS_VERSION = "3.2.0-4_655b711428819549fb10538e736f2ca4b4e4d8a6"
-PR = "r32"
+PR = "r33"
 
 inherit webos_component
 inherit webos_public_repo
@@ -31,7 +31,7 @@ inherit webos_library
 inherit webos_prerelease_dep
 
 EXTRA_OECMAKE += "-DWEBOS_DB8_BACKEND:STRING='leveldb;sandwich' -DCMAKE_SKIP_RPATH:BOOL=TRUE"
-EXTRA_OECMAKE_append_class-target = " -DWEBOS_CONFIG_BUILD_TESTS:BOOL=TRUE  -DUSE_PMLOG:BOOL=TRUE  -DBUILD_LS2:BOOL=TRUE -DWANT_PROFILING:BOOL=${@ 'true' if '${WEBOS_DISTRO_PRERELEASE}' != '' else 'false'}"
+EXTRA_OECMAKE_append_class-target = " -DWEBOS_CONFIG_BUILD_TESTS:BOOL=FALSE  -DUSE_PMLOG:BOOL=TRUE  -DBUILD_LS2:BOOL=TRUE -DWANT_PROFILING:BOOL=${@ 'true' if '${WEBOS_DISTRO_PRERELEASE}' != '' else 'false'}"
 EXTRA_OECMAKE_append_class-native = " -DWEBOS_CONFIG_BUILD_TESTS:BOOL=FALSE -DUSE_PMLOG:BOOL=FALSE -DBUILD_LS2:BOOL=FALSE"
 
 # Backported from Yocto 1.8

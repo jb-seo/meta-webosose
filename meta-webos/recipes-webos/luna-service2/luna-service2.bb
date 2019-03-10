@@ -13,7 +13,7 @@ VIRTUAL-RUNTIME_bash ?= "bash"
 RDEPENDS_${PN} = "luna-service2-security-conf ${VIRTUAL-RUNTIME_cpushareholder} ${VIRTUAL-RUNTIME_rdx-utils} ${VIRTUAL-RUNTIME_bash}"
 
 WEBOS_VERSION = "3.21.2-2_74202d0f43d4a45756c9b561a42aba55a39b9136"
-PR = "r23"
+PR = "r24"
 
 WEBOS_DISTRO_PRERELEASE ??= ""
 EXTRA_OECMAKE += "${@ '-DWEBOS_DISTRO_PRERELEASE:STRING="devel"' \
@@ -54,6 +54,7 @@ EXTRA_OECMAKE += " ${@bb.utils.contains('WEBOS_LTTNG_ENABLED', '1', '-DWEBOS_LTT
 
 WEBOS_DISABLE_LS2_SECURITY ?= "0"
 EXTRA_OECMAKE += '${@oe.utils.conditional("WEBOS_DISABLE_LS2_SECURITY", "1", "-DWEBOS_LS2_SECURE:BOOLEAN=False", "" ,d)}'
+EXTRA_OECMAKE += ' -DWEBOS_CONFIG_BUILD_TESTS=False'
 
 PACKAGES += "${PN}-perf"
 
