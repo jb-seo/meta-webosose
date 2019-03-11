@@ -1,0 +1,24 @@
+From 9b6eec1fb853348e04e3f19e58b9c1361043478a Mon Sep 17 00:00:00 2001
+From: JeongBong Seo <lifeofthanks@gmail.com>
+Date: Mon, 11 Mar 2019 16:45:42 +0900
+Subject: [Workaround] Unblock wifi device
+
+---
+ files/systemd/services/common/wpa-supplicant.service | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/files/systemd/services/common/wpa-supplicant.service b/files/systemd/services/common/wpa-supplicant.service
+index 5ab3fe4..e2393af 100644
+--- a/files/systemd/services/common/wpa-supplicant.service
++++ b/files/systemd/services/common/wpa-supplicant.service
+@@ -25,6 +25,7 @@ After=ls-hubd.service
+ Type=simple
+ OOMScoreAdjust=-500
+ EnvironmentFile=-/var/systemd/system/env/wpa-supplicant.env
++ExecStartPre=/usr/sbin/rfkill unblock wifi
+ ExecStartPre=/etc/systemd/system/scripts/wpa-supplicant.sh
+ ExecStart=/usr/sbin/wpa_supplicant -u -s
+ Restart=on-failure
+-- 
+2.17.1
+

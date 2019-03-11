@@ -3,6 +3,8 @@ FILESEXTRAPATHS_prepend_rpi := "${THISDIR}/files:"
 SRC_URI_append_rpi = " \
     file://brcmfmac43430-sdio.bin \
     file://brcmfmac43430-sdio.txt \
+    file://brcmfmac43455-sdio.bin \
+    file://brcmfmac43455-sdio.txt \
 "
 
 do_install_append_rpi() {
@@ -19,8 +21,14 @@ do_install_append_rpi() {
 
     mkdir -p ${D}/${nonarch_base_libdir}/firmware/brcm
     install -m 0644 $_firmware ${WORKDIR}/brcmfmac43430-sdio.txt ${D}${nonarch_base_libdir}/firmware/brcm
+
+    # install RPI 3B+ wifi firmware
+    install -m 0644 $_firmware ${WORKDIR}/brcmfmac43455-sdio.txt ${D}${nonarch_base_libdir}/firmware/brcm
+    install -m 0644 $_firmware ${WORKDIR}/brcmfmac43455-sdio.bin ${D}${nonarch_base_libdir}/firmware/brcm
 }
 
 FILES_${PN}-bcm43430_append_rpi = " \
     ${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.txt \
+    ${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.txt \
+    ${nonarch_base_libdir}/firmware/brcm/brcmfmac43455-sdio.bin \
 "
