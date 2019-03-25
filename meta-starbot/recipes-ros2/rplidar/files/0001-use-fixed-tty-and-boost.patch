@@ -1,0 +1,19 @@
+diff --git a/src/node.cpp b/src/node.cpp
+index 3cb4388..8d0dbfb 100644
+--- a/src/node.cpp
++++ b/src/node.cpp
+@@ -220,12 +220,12 @@ int main(int argc, char * argv[]) {
+     auto scan_pub = node->create_publisher<sensor_msgs::msg::LaserScan>("scan", qos);
+ 
+     /* set parameters */
+-    node->get_parameter_or("serial_port", serial_port, std::string("/dev/ttyUSB0"));
++    node->get_parameter_or("serial_port", serial_port, std::string("/dev/ttyLidar"));
+     node->get_parameter_or("serial_baudrate", serial_baudrate, 115200);
+     node->get_parameter_or("frame_id", frame_id, std::string("laser_frame"));
+     node->get_parameter_or("inverted", inverted, false);
+     node->get_parameter_or("angle_compensate", angle_compensate, false);
+-    node->get_parameter_or("scan_mode", scan_mode, std::string());
++    node->get_parameter_or("scan_mode", scan_mode, std::string("Boost"));
+ 
+     ROS_INFO("RPLIDAR running on ROS package rplidar_ros. SDK Version:"RPLIDAR_SDK_VERSION"");
+ 

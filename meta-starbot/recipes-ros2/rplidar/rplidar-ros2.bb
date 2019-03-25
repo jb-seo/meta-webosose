@@ -10,8 +10,19 @@ DEPENDS = "rclcpp sensor-msgs std-srvs ament-cmake-ros"
 inherit ament
 
 SRCREV = "944d9f6359113334e8b276bc628b1a72380b610d"
-SRC_URI = "git://github.com/jb-seo/rplidar_ros2.git;branch=ros2"
+SRC_URI = " \
+    git://github.com/jb-seo/rplidar_ros2.git;branch=ros2 \
+    file://99-usb-serial.rules \
+    file://0001-use-fixed-tty-and-boost.patch \
+"
 
 FILES_${PN} = "${bindir} ${datadir}"
 
 S = "${WORKDIR}/git"
+
+do_install_append() {
+    install -d ${D}/etc/udev/rules.d
+    install -m 644 ${WORKDIR}/99-usb-serial.rules ${D}/etc/udev/rules.d
+}
+
+FILES_${PN} += " /etc"
