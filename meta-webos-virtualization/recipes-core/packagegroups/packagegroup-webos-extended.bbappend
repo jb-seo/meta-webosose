@@ -5,6 +5,6 @@ EXTENDPRAUTO_append = "webosvirt1"
 
 RDEPENDS_${PN}_append = " \
     docker \
-    e2fsprog-resize2fs \
+    e2fsprogs-resize2fs \
     kernel-modules \
 "
